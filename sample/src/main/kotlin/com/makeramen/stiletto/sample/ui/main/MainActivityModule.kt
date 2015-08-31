@@ -14,18 +14,17 @@
 * limitations under the License.
 */
 
-package com.makeramen.stiletto.sample
+package com.makeramen.stiletto.sample.ui.main
 
-import android.app.Application
-import stiletto.Component
-import kotlin.properties.Delegates
+import android.app.Activity
+import stiletto.Module
 
-public class StilettoApp : Application() {
+interface MainActivityModule: Module {
+  val mainActivity: MainActivity
 
-  val component: ApplicationComponent = ApplicationComponent(this)
+  fun mainActivity() : MainActivity = mainActivity
 
-  override fun onCreate() {
-    super.onCreate()
+  fun activity() : Activity = mainActivity
 
-  }
+  fun resources() = singleton { activity().getResources() }
 }
