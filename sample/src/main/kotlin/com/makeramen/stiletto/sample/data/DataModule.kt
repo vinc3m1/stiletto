@@ -10,5 +10,11 @@ public interface DataModule : Module {
   // make sure to have same method signature as providing module
   fun application() : Application
 
-  fun sharedPreferences() { application().getSharedPreferences("default", Context.MODE_PRIVATE) }
+  fun sharedPreferences() = singleton {
+    application().getSharedPreferences("default", Context.MODE_PRIVATE)
+  }
+
+  fun specialSharedPreferences() = singleton("special") {
+    application().getSharedPreferences("special", Context.MODE_PRIVATE)
+  }
 }
