@@ -1,6 +1,8 @@
 Stiletto
 ==========
 
+[![Stiletto](https://upload.wikimedia.org/wikipedia/commons/0/06/Gunners_stiletto_01.jpg)](https://en.wikipedia.org/wiki/Stiletto)
+
 The implmentation of Stiletto just in [one file](https://github.com/vinc3m1/stiletto/blob/master/library/src/main/kotlin/stiletto/Stiletto.kt), which you can just copy to your codebase instead of importing by maven or something fancy. The interesting parts are in the usage and configuration, which is what the sample app is for.
 
 **Modules** are just [interfaces](https://github.com/vinc3m1/stiletto/blob/master/sample/src/main/kotlin/com/makeramen/stiletto/sample/ApplicationModule.kt) with stateless "provider" functions and wrapped with [`singleton`](https://github.com/vinc3m1/stiletto/blob/master/sample/src/main/kotlin/com/makeramen/stiletto/sample/data/DataModule.kt#L13) (and an optional [tag](https://github.com/vinc3m1/stiletto/blob/master/sample/src/main/kotlin/com/makeramen/stiletto/sample/data/DataModule.kt#L17)) if needed.
