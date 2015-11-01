@@ -20,6 +20,10 @@ import com.makeramen.stiletto.sample.data.DataModule
 import stiletto.Component
 
 // abstract interface to allow other components to inherit from this one
-interface AbsApplicationComponent : ApplicationModule, DataModule
+interface AbsApplicationComponent : ApplicationModule, DataModule {
+  override fun application(): StilettoApp {
+    return super.application()
+  }
+}
 
 class ApplicationComponent(override val stilettoApp: StilettoApp) : Component(), AbsApplicationComponent

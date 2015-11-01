@@ -18,18 +18,15 @@ package com.makeramen.stiletto.sample.ui.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.makeramen.stiletto.sample.ApplicationComponent
 import com.makeramen.stiletto.sample.StilettoApp
-import stiletto.Component
-import kotlin.properties.Delegates
 
 public class MainActivity : AppCompatActivity() {
 
-  val appComponent by Delegates.lazy { (getApplicationContext() as StilettoApp).component }
-  val component by Delegates.lazy { MainActivityComponent(this, appComponent) }
+  val appComponent by lazy { (getApplicationContext() as StilettoApp).component }
+  val component by lazy { MainActivityComponent(this, appComponent) }
 
-  val sharedPrefs by Delegates.lazy { component.sharedPreferences() }
-  val activityResources by Delegates.lazy { component.resources() }
+  val sharedPrefs by lazy { component.sharedPreferences() }
+  val activityResources by lazy { component.resources() }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

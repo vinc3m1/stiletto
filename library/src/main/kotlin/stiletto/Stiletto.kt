@@ -23,8 +23,8 @@ interface SingletonHolder {
   val singletonMap: ConcurrentMap<String, Any>
 
   final inline fun <reified T : Any> singleton(tag: String = "",
-      initializer: () -> T): T {
-    return singletonMap.concurrentGetOrPut("${javaClass<T>().getName()}.${tag} ", initializer) as T
+                                               initializer: () -> T): T {
+    return singletonMap.concurrentGetOrPut("${T::class.java.name}.$tag ", initializer) as T
   }
 }
 
@@ -32,13 +32,4 @@ public interface Module : SingletonHolder {}
 
 public abstract class Component : SingletonHolder {
   override val singletonMap = ConcurrentHashMap<String, Any>()
-}
-
-// from Kotlin M13
-private inline fun <K, V : Any> ConcurrentMap<K, V>.concurrentGetOrPut(key: K,
-    defaultValue: () -> V): V {
-  // Do not use computeIfAbsent on JVM8 as it would change locking behavior
-  return this.get(key) ?: defaultValue().let { default ->
-    this.putIfAbsent(key, default) ?: default
-  }
 }
