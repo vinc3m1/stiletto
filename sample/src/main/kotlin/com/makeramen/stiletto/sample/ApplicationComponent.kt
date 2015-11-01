@@ -21,9 +21,8 @@ import stiletto.Component
 
 // abstract interface to allow other components to inherit from this one
 interface AbsApplicationComponent : ApplicationModule, DataModule {
-  override fun application(): StilettoApp {
-    return super.application()
-  }
+  override fun application() = super.application()
 }
 
-class ApplicationComponent(override val stilettoApp: StilettoApp) : Component(), AbsApplicationComponent
+class ApplicationComponent(override val stilettoApp: StilettoApp) : Component(),
+    AbsApplicationComponent

@@ -16,7 +16,6 @@
 
 package com.makeramen.stiletto.sample
 
-import android.app.Application
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import stiletto.Module
